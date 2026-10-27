@@ -1,0 +1,197 @@
+-- Matching local data in data/seed.ts. Agenda dates here are placeholders.
+-- The app computes upcoming demo dates in code. TODO: replace with real agenda archive items.
+
+insert into bodies (
+  id, city, level, name_en, name_es, topics, meeting_pattern, location, time_limit_minutes,
+  how_to_speak_en, how_to_speak_es, accepts_written, written_instructions, contact_url, verified
+) values
+(
+  'pleasanton_youth_commission',
+  'Pleasanton',
+  'city',
+  'Pleasanton Youth Commission',
+  'Comisión Juvenil de Pleasanton',
+  array['youth_programs','youth_spaces','youth_events','teen_services'],
+  '2nd Wednesday of each month, 7:00 PM',
+  'Operations Services Center, 3333 Busch Rd, Pleasanton',
+  3,
+  'Fill out a speaker card at the meeting. Speak when your name is called. 3 minutes per speaker.',
+  'Llena una tarjeta de orador en la reunión. Habla cuando te llamen. 3 minutos por persona.',
+  false,
+  null,
+  null,
+  true
+),
+(
+  'pleasanton_bpt_committee',
+  'Pleasanton',
+  'city',
+  'Bicycle, Pedestrian & Trails Committee',
+  'Comité de Bicicletas, Peatones y Senderos',
+  array['pedestrian_safety','bike_infrastructure','trails','traffic'],
+  'TODO_VERIFY',
+  'TODO_VERIFY',
+  3,
+  'TODO_VERIFY',
+  'TODO_VERIFY',
+  false,
+  null,
+  null,
+  false
+),
+(
+  'pleasanton_parks_rec',
+  'Pleasanton',
+  'city',
+  'Parks & Recreation Commission',
+  'Comisión de Parques y Recreación',
+  array['parks','recreation_facilities'],
+  'TODO_VERIFY',
+  'TODO_VERIFY',
+  3,
+  'TODO_VERIFY',
+  'TODO_VERIFY',
+  false,
+  null,
+  null,
+  false
+),
+(
+  'pleasanton_library_commission',
+  'Pleasanton',
+  'city',
+  'Pleasanton Library Commission',
+  'Comisión de la Biblioteca de Pleasanton',
+  array['library'],
+  'TODO_VERIFY',
+  'TODO_VERIFY',
+  3,
+  'TODO_VERIFY',
+  'TODO_VERIFY',
+  false,
+  null,
+  null,
+  false
+),
+(
+  'pleasanton_city_council',
+  'Pleasanton',
+  'city',
+  'Pleasanton City Council',
+  'Concejo Municipal de Pleasanton',
+  array['city_budget','housing','public_safety','environment','arts','other'],
+  'TODO_VERIFY',
+  'TODO_VERIFY',
+  3,
+  'TODO_VERIFY',
+  'TODO_VERIFY',
+  false,
+  null,
+  null,
+  false
+),
+(
+  'pusd_board',
+  'Pleasanton',
+  'school_district',
+  'Pleasanton Unified School District Board of Education',
+  'Junta de Educación del Distrito Escolar Unificado de Pleasanton',
+  array['school_policy','school_district'],
+  'TODO_VERIFY',
+  'TODO_VERIFY',
+  3,
+  'TODO_VERIFY',
+  'TODO_VERIFY',
+  false,
+  null,
+  null,
+  false
+),
+(
+  'rep_wahab_office',
+  'CA-14',
+  'federal',
+  'Office of Rep. Aisha Wahab (CA-14)',
+  'Oficina de la Rep. Aisha Wahab (CA-14)',
+  array['federal_issue'],
+  null,
+  null,
+  3,
+  null,
+  null,
+  false,
+  null,
+  'TODO_VERIFY',
+  false
+)
+on conflict (id) do nothing;
+
+insert into agenda_items (
+  id, body_id, meeting_date, meeting_time, item_number, title, summary_en, summary_es, topics, source_url, is_demo
+) values
+(
+  '11111111-1111-4111-8111-111111111111',
+  'pleasanton_youth_commission',
+  '2027-01-13',
+  '7:00 PM',
+  '4',
+  'Review and discuss Youth in Government Day 2027',
+  'Commissioners will talk about planning Youth in Government Day 2027. This is demo data, not a live agenda.',
+  'Las y los comisionados hablarán sobre la planificación del Youth in Government Day 2027. Esto es datos de demostración, no una agenda real.',
+  array['youth_events','youth_programs'],
+  null,
+  true
+),
+(
+  '22222222-2222-4222-8222-222222222222',
+  'pleasanton_bpt_committee',
+  '2027-01-20',
+  null,
+  '4',
+  'Review pedestrian crossing and trail connection priorities',
+  'A demo discussion of where crossings and trail links may need attention. Not taken from a live agenda.',
+  'Una discusión de demostración sobre cruces peatonales y conexiones de senderos. No proviene de una agenda real.',
+  array['pedestrian_safety','bike_infrastructure','trails'],
+  null,
+  true
+),
+(
+  '33333333-3333-4333-8333-333333333333',
+  'pleasanton_parks_rec',
+  '2027-01-27',
+  null,
+  '3',
+  'Review park facility use guidelines',
+  'A demo item about how park facilities are reserved and used. Not taken from a live agenda.',
+  'Un tema de demostración sobre el uso de instalaciones de parques. No proviene de una agenda real.',
+  array['parks','recreation_facilities'],
+  null,
+  true
+),
+(
+  '44444444-4444-4444-8444-444444444444',
+  'pleasanton_city_council',
+  '2027-02-03',
+  null,
+  '8',
+  'Study session on housing element implementation',
+  'A demo study session label about housing policy. Not taken from a live agenda.',
+  'Una sesión de estudio de demostración sobre vivienda. No proviene de una agenda real.',
+  array['housing'],
+  null,
+  true
+),
+(
+  '55555555-5555-4555-8555-555555555555',
+  'pleasanton_youth_commission',
+  '2027-02-10',
+  '7:00 PM',
+  '5',
+  'Discuss teen gathering spaces and evening programs',
+  'A demo conversation about places and hours for teens. Not taken from a live agenda.',
+  'Una conversación de demostración sobre espacios y horarios para jóvenes. No proviene de una agenda real.',
+  array['youth_spaces','teen_services'],
+  null,
+  true
+)
+on conflict (id) do nothing;
